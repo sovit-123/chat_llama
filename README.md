@@ -55,7 +55,7 @@ print(result) # Output: 8
 
 Suppose that you have some content in the `prompt.txt` file. A sample file is already provided with the repository. This contains a part of the DETR paper. You can replace it with your own content. Here are some prompting techniques:
 
-* Instead of a prompt provide the text file path and set the agenda as `summarize`:
+* Instead of a prompt, provide the text file path and set the agenda as `summarize`:
 
 ```
 python run_llama2_7b_chat_gptq.py --prompt prompt.txt --system-agenda "summarize"
@@ -69,7 +69,7 @@ The paper presents a new method for object detection called DEtection TRansforme
 ```
 
 * The text file can be quite large and prompting the entire content to the model can result in CUDA OOM. By default the script considers only the first 11000 characters. We can increase or decrease the limit using the `--limit` argument. Higher limit gives better outputs. Set `--limit -1` to consider the all the content of the file.
-  * Following is an example to do so. Not output shown as I get CUDA OOM on 10 GB GPU.
+  * Following is an example to do so. No output shown as I get CUDA OOM on 10 GB GPU.
 
 ```
 python run_llama2_7b_chat_gptq.py --prompt prompt.txt --system-agenda "summarize" --limit -1
