@@ -1,5 +1,9 @@
-from transformers import AutoTokenizer, pipeline, logging
-from auto_gptq import AutoGPTQForCausalLM
+from transformers import (
+    AutoTokenizer, 
+    pipeline, 
+    logging,
+    AutoModelForCausalLM
+) 
 from file_reader import read_file
 
 import argparse
@@ -41,9 +45,9 @@ parser.add_argument(
     default='Llama-2-7b-Chat-GPTQ'
 )
 parser.add_argument(
-    '--mode-base',
+    '--model-base',
     dest='model_base',
-    default='gptq_model-4bit-128g'
+    default='gptq-4bit-128g-actorder_True'
 )
 args = parser.parse_args()
 
@@ -54,14 +58,11 @@ device = 'cuda:0'
 
 tokenizer = AutoTokenizer.from_pretrained(args.model_path, use_fast=True)
 
-model = AutoGPTQForCausalLM.from_quantized(
+model = AutoModelForCausalLM.from_pretrained(
     args.model_path,
-    model_basename=args.model_base,
-    use_safetensors=True,
-    trust_remote_code=True,
-    device=device,
-    use_triton=use_triton,
-    quantize_config=None
+    device_map="auto",
+    trust_remote_code=False,
+    revision=args.model_base,
 )
 
 prompt = args.prompt
