@@ -58,7 +58,7 @@ Suppose that you have some content in the `prompt.txt` file. A sample file is al
 * Instead of a prompt, provide the text file path and set the agenda as `summarize`:
 
 ```
-python run_llama2_7b_chat_gptq.py --prompt prompt.txt --system-agenda "summarize"
+python run_llama2_7b_chat_gptq.py --prompt data/prompt.txt --system-agenda "summarize"
 ```
 
 Output:
@@ -72,13 +72,13 @@ The paper presents a new method for object detection called DEtection TRansforme
   * Following is an example to do so. No output shown as I get CUDA OOM on 10 GB GPU.
 
 ```
-python run_llama2_7b_chat_gptq.py --prompt prompt.txt --system-agenda "summarize" --limit -1
+python run_llama2_7b_chat_gptq.py --prompt data/prompt.txt --system-agenda "summarize" --limit -1
 ```
 
 * By default the model generates 512 new tokens. We can set the number of tokens using `--new-tokens`
 
 ```
-python run_llama2_7b_chat_gptq.py --prompt prompt.txt --system-agenda "summarize in 1000 words" --new-tokens 2048
+python run_llama2_7b_chat_gptq.py --prompt data/prompt.txt --system-agenda "summarize in 1000 words" --new-tokens 2048
 ```
 
 Output:
