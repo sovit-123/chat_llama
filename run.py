@@ -75,7 +75,6 @@ system_message = args.system_agenda
 prompt_template=f'''[INST] <<SYS>>
 {system_message}
 <</SYS>>
-
 {prompt} [/INST]'''
 
 if args.limit != -1:
